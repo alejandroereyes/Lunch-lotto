@@ -5,7 +5,8 @@ var App = Backbone.Router.extend({
         'edit': 'edit'
     },
     profile: function() {
-      React.render(<Profile/>, document.querySelector('#container'));
+
+      React.render(<SigninPage/>, document.querySelector('#container'));
     },
     edit: function() {
       React.render(<Edit/>, document.querySelector('#container'));
