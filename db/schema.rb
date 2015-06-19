@@ -17,35 +17,38 @@ ActiveRecord::Schema.define(version: 20150619002618) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.boolean  "easy_breezy"
-    t.boolean  "health_nut"
-    t.boolean  "wild_child"
-    t.boolean  "lux_lunch"
-    t.boolean  "casual_sit_down"
+    t.boolean  "easy_breezy",     default: false
+    t.boolean  "health_nut",      default: false
+    t.boolean  "wild_child",      default: false
+    t.boolean  "lux_lunch",       default: false
+    t.boolean  "casual_sit_down", default: false
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "foods", ["user_id"], name: "index_foods_on_user_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
     t.string   "match_id"
+    t.integer  "pair"
+    t.boolean  "accept",     default: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "matches", ["user_id"], name: "index_matches_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.string   "event_id"
     t.string   "post"
     t.integer  "user_id"
+    t.integer  "match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "messages", ["match_id"], name: "index_messages_on_match_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +64,6 @@ ActiveRecord::Schema.define(version: 20150619002618) do
 
   add_foreign_key "foods", "users"
   add_foreign_key "matches", "users"
+  add_foreign_key "messages", "matches"
   add_foreign_key "messages", "users"
 end
