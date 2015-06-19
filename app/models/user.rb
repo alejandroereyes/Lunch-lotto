@@ -4,13 +4,11 @@ class User < ActiveRecord::Base
   has_many :matches, dependent: :destroy
   has_many :messages, dependent: :destroy
   validates :name, presence: { message: "Hi, looks like you forgot to add your name." }
-  validates :email, presence: { message: "Hi, looks like you forgot to add an email" }
-  validates :network_cirle, presence: { message: "Hi, looks you forgot to select a cirle" }
 
-  def match_a_user(session[:user_id])
+  def self.match_a_user(session)
     current_user = User.find(session[:user_id]) #get current user
-    requested_network = current_user[:network_cirle] # get current user's network
-    users_in_network = User.where(network_cirle: requested_network) #find all user's who match network
+    requested_network = current_user[:network] # get current user's network
+    users_in_network = User.where(network: requested_network) #find all user's who match network
     # find all user's who match on 3 columns...Wat!?
     possible_matches = [] # look at each user in network
     users_in_network.each do |user|
@@ -22,8 +20,6 @@ class User < ActiveRecord::Base
     # user random select, range is up to array length - 1, to select a random user
     pick = SecureRandom.random_number(possible_matches.size)
     paired_user = possible_matches[pick]
-    # store the 3 matches to send user info about why they got this user
-    food_matches = matching_food_preferences(paired_user)
   end
 
   def number_of_matches
@@ -36,7 +32,7 @@ class User < ActiveRecord::Base
     counter
   end
 
-  def matching_food_preferences(user)
+  def self.matching_food_preferences(user) # store the 3 matches to send user info about why they got this user
     info = []
     info = user.foods[:easy_breezy] == current_user.foods[:easy_breezy] ? info + "Easy Breezy" : info
     info = user.foods[:health_nut] == current_user.foods[:health_nut] ? info + "Health Nut" : info
