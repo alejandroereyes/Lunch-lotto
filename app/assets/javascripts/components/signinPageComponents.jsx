@@ -5,23 +5,39 @@ var SigninPage= React.createClass({
 			<section className="page" ref="register">
 				<div>
 					<h1>Register</h1>
-					<form ref="register-form">
-						<input type="text" placeholder="username" ref="register-username"/>
-						<input type="password" placeholder="password" ref="register-password"/>
-						<div className="error" ref="register-error"></div>
+					<form ref="registerForm" onSubmit = {this.register}>
+						<input type="text" placeholder="username" ref="registerUsername"/>
+						<input type="password" placeholder="password" ref="registerPassword"/>
+						<div className="error" ref="registerError"></div>
 						<button type="submit">Register</button>
 					</form>
 				</div>
 				<div className="page" ref="login">
 					<h1>Login</h1>
-					<form ref="login-form">
-						<input type="text" placeholder="username" ref="login-username"/>
-						<input type="password" placeholder="password" ref="login-password"/>
-						<div className="error" ref="login-error"></div>
+					<form ref="loginForm" onSubmit ={this.login}>
+						<input type="text" placeholder="username" ref="loginUsername"/>
+						<input type="password" placeholder="password" ref="loginPassword"/>
+						<div className="error" ref="loginError"></div>
 						<button type="submit">Login</button>
 					</form>
 				</div>
 			</section>
 		);
+	},
+
+
+	register: function(e){
+		e.preventDefault()
+		var newUser = new UserModel({
+			name: this.refs.registerUsername.getDOMNode().value,
+			password: this.refs.registerPassword.getDOMNode().value
+			
+		});
+
+		newUser.save()
+		console.log(newUser)
 	}
+	
+	// login: function(e){
+	
 });

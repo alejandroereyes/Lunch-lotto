@@ -3,7 +3,7 @@ var Profile = React.createClass({
         return (
           <div>
             <h1> Profile Page </h1>
-            <a href='#edit'>Edit</a>
+            <a href='#profile'></a>
           </div>
         );
     }

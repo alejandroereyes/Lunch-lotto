@@ -2,17 +2,25 @@
 var App = Backbone.Router.extend({
     routes: {
         '': 'profile',
-        'edit': 'edit'
+        'home': 'home',
+        'signIn': 'signIn'
     },
-    profile: function() {
-
+    home: function() {
+      React.render(<Home/>, document.querySelector('#container'));
+    },
+    signIn: function() {
       React.render(<SigninPage/>, document.querySelector('#container'));
     },
-    edit: function() {
-      React.render(<Edit/>, document.querySelector('#container'));
+    profile: function(){
+        React.render(<Profile/>, document.querySelector('#container'));
     }
+    
 });
 
 var app = new App();
 Backbone.history.start();
-app.navigate('edit');
+app.navigate('home');
+
+ 
+
+
