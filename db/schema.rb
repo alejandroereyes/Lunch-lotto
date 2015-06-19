@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "network_circle"
+    t.string   "network"
     t.string   "linked_in"
     t.string   "twitter"
     t.datetime "created_at",      null: false
