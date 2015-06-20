@@ -57,25 +57,25 @@ var SigninPage= React.createClass({
 			password: this.refs.loginPassword.getDOMNode().value,
 		});
 
-		if(!currentUser.isValid()){
-			$('#login-error').html(currentUser.validationError);
-		}
-		else{
-			loggedInUser = user.findWhere({
-				name: this.refs.loginUsername.getDOMNode().value,
-				password: this.refs.loginPassword.getDOMNode().value,
-			});
+	// 	if(!currentUser.isValid()){
+	// 		$('#login-error').html(currentUser.validationError);
+	// 	}
+	// 	else{
+	// 		loggedInUser = user.findWhere({
+	// 			name: this.refs.loginUsername.getDOMNode().value,
+	// 			password: this.refs.loginPassword.getDOMNode().value,
+	// 		});
 
-		if(loggedInUser) {
-			 	app.navigate('feed', {trigger: true});
-				}
+	// 	if(loggedInUser) {
+	// 		 	app.navigate('feed', {trigger: true});
+	// 			}
 			
-		else {
-			$('#login-error').html('Your username / password combination is incorrect.');
-		}
+	// 	else {
+	// 		$('#login-error').html('Your username / password combination is incorrect.');
+	// 	}
 
 
-	};	
+	// };	
 
 }
 

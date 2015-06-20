@@ -1,12 +1,13 @@
 /* global Backbone React */
 var App = Backbone.Router.extend({
     routes: {
-        '': 'profile',
+        '': 'home',
         'home': 'home',
+        'profile': 'profile',
         'signIn': 'signIn'
     },
     home: function() {
-      React.render(<ome/>, document.querySelector('#container'));
+      React.render(<Home/>, document.querySelector('#container'));
     },
     signIn: function() {
       React.render(<SigninPage/>, document.querySelector('#container'));
