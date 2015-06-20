@@ -5,18 +5,22 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def show
+
+  end
+
   def new
     @user = User.new
     render json: @user
   end
 
+  def get_a_match
+  end
+
   def create
-    # render json: params
-    @user = User.create(user_params)
-    # @user[:name] = params[:name]
-    # @user[:email] = params[:email]
-    # @user[:password] = params[:password]
-    if @user.save
+    @user = User.create(name: params[:name], password: params[:password],
+                        password_confirmation: params[:password_confirmation])
+    if @user
       render json: @user
     else
       flash[:alert] = "Error Occured!"
@@ -28,10 +32,5 @@ class UsersController < ApplicationController
     @user = User.find_by_email(params[:email])
     @user.destory
     redirect_to root_path
-  end
-
-  private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :twitter, :linked_in, :network)
   end
 end

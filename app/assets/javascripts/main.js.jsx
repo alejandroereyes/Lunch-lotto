@@ -1,8 +1,9 @@
 /* global Backbone React */
 var App = Backbone.Router.extend({
     routes: {
-        '': 'profile',
+        '': 'home',
         'home': 'home',
+        'profile': 'profile',
         'signIn': 'signIn'
     },
     home: function() {
