@@ -8,7 +8,9 @@ var SigninPage= React.createClass({
 					<form ref="registerForm" onSubmit = {this.register}>
 						<input type="text" placeholder="username" ref="registerUsername"/>
 						<input type="password" placeholder="password" ref="registerPassword"/>
+						<input type="password_confirmation" placeholder="password_confirmation" ref="passwordConfirmation"/>
 						<div className="error" ref="registerError"></div>
+
 						<button type="submit">Register</button>
 					</form>
 				</div>
@@ -30,14 +32,52 @@ var SigninPage= React.createClass({
 		e.preventDefault()
 		var newUser = new UserModel({
 			name: this.refs.registerUsername.getDOMNode().value,
-			password: this.refs.registerPassword.getDOMNode().value
-			
+			password: this.refs.registerPassword.getDOMNode().value,
+			password_confirmation: this.refs.passwordConfirmation.getDOMNode().value
+		}	
+	);
+
+		if(!newUser.isValid()) {
+				$('#registerError').html(newUser.validationError);
+			}
+			else {
+				console.log('You should save the user');
+				newUser.save();
+				app.navigate('feed', {trigger: true});
+			}
+		
+
+		// newUser.save()
+		// console.log(newUser)
+	},
+	
+	login: function(e){
+		e.preventDefault()
+		var currentUser = new UserModel({
+			name: this.refs.loginUsername.getDOMNode().value,
+			password: this.refs.loginPassword.getDOMNode().value,
 		});
 
-		newUser.save()
-		console.log(newUser)
-	}
-	
-	// login: function(e){
-	
+		if(!currentUser.isValid()){
+			$('#login-error').html(currentUser.validationError);
+		}
+		else{
+			loggedInUser = users.findWhere({
+				name: this.refs.loginUsername.getDOMNode().value,
+				password: this.refs.loginPassword.getDOMNode().value,
+			});
+
+		if(loggedInUser) {
+			 	app.navigate('feed', {trigger: true});
+				}
+			
+		else {
+			$('#login-error').html('Your username / password combination is incorrect.');
+		}
+
+
+	};	
+
+}
+
 });

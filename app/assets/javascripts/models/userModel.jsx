@@ -6,14 +6,15 @@ var UserModel = Backbone.Model.extend ({
 		password_confirmation: null
 
 	},
-	urlRoot: 'https://lunch-lotto.herokuapp.com/',
+	urlRoot: 'localhost:3000/',
 
 	validate: function(attr) {
 		if (!attr.name) {
 			return 'Enter a Username to Lunch!';
 		}
 		else if(!attr.password){
-			return 'Please enter a password to Lunch!';
+			return 'Please enter a password to Lunch!'; 
+
 		}
 		// else if(!validator.isAlphanumeric(attr.name)) {
 		// 	return 'Username must only contain letters and numbers.';
