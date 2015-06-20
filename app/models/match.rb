@@ -3,7 +3,7 @@ class Match < ActiveRecord::Base
   belongs_to :user
   def self.match_two_users(matched_user, current_user)
     # check if users have a match already
-    # if not_already_matched_today?
+    # if can_this_user_be_mathed?
       match_id = SecureRandom.hex # generate unique match id
       @current_user_match = Match.new # create new match for current
       @matched_user_match = Match.new # create new match for matched user
@@ -24,7 +24,10 @@ class Match < ActiveRecord::Base
     # end
   end
 
-  def can_this_user_be_matched?
+  def does_user_have_pending_match?
+    # does user have a match pending? if so, resend that match
+  end
 
+  def did_user_accept_a_match_already_today?
   end
 end
