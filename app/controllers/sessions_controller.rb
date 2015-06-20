@@ -7,10 +7,9 @@ class SessionsController < ApplicationController
 
     if user != nil && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_path
+      render json: session
     else
-      flash[:alert] = "Hi, looks like your email or password does not match"
-      render :new
+      render json: { error: "User data does not match" }, status: 401
     end
   end
   def destroy

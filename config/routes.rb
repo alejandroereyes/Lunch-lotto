@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'users/match', to: 'users#get_a_match'
   resources :users
 
   resources :foods
