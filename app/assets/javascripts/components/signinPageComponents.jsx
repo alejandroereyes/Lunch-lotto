@@ -12,6 +12,7 @@ var SigninPage= React.createClass({
 						<div className="error" ref="registerError"></div>
 
 						<button type="submit">Register</button>
+
 					</form>
 				</div>
 				<div className="page" ref="login">
@@ -21,6 +22,7 @@ var SigninPage= React.createClass({
 						<input type="password" placeholder="password" ref="loginPassword"/>
 						<div className="error" ref="loginError"></div>
 						<button type="submit">Login</button>
+						<button type="logout" ref="logOut">Log Out</button>
 					</form>
 				</div>
 			</section>
@@ -57,40 +59,25 @@ var SigninPage= React.createClass({
 			password: this.refs.loginPassword.getDOMNode().value,
 		});
 
-		if(!currentUser.isValid()){
-			$('#login-error').html(currentUser.validationError);
-		}
-		else{
-			loggedInUser = users.findWhere({
-				email: this.refs.loginEmail.getDOMNode().value,
-				password: this.refs.loginPassword.getDOMNode().value,
-			});
+		// if(!currentUser.isValid()){
+		// 	$('#login-error').html(currentUser.validationError);
+		// }
+		// else{
+		// 	loggedInUser = user.findWhere({
+		// 		email: this.refs.loginEmail.getDOMNode().value,
+		// 		password: this.refs.loginPassword.getDOMNode().value,
+		// 	});
 
-	// 	if(!currentUser.isValid()){
-	// 		$('#login-error').html(currentUser.validationError);
-	// 	}
-	// 	else{
-	// 		loggedInUser = user.findWhere({
-	// 			name: this.refs.loginUsername.getDOMNode().value,
-	// 			password: this.refs.loginPassword.getDOMNode().value,
-	// 		});
+		// }
+	},
 
-
-	// 	if(loggedInUser) {
-	// 		 	app.navigate('feed', {trigger: true});
-	// 			}
-			
-	// 	else {
-	// 		$('#login-error').html('Your username / password combination is incorrect.');
-	// 	}
-
-
-	// };	
-
-};
-
-}
+	logout: function(e){
+			e.preventDefault()
+			var currentUser = new logoutModel({
+			button: this.refs.logOut.getDOMNode().value,	
+		
+		});
+	},
 
 });
-
 
