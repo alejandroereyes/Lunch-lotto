@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :foods, dependent: :destroy
   has_many :matches, dependent: :destroy
   has_many :messages, dependent: :destroy
-  validates :name, presence: { message: "Hi, looks like you forgot to add your name." }
+  validates :email, presence: { message: "Hi, looks like you forgot to add your email." }
 
   def self.match_a_user_to(user)
     current_user = user #get current user

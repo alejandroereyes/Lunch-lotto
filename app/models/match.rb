@@ -24,10 +24,17 @@ class Match < ActiveRecord::Base
     # end
   end
 
-  def does_user_have_pending_match?
+  def does_user_have_pending_match?(user)
+    _24_hours = 86400 #seconds
     # does user have a match pending? if so, resend that match
+    Match.where(user_id: user[:id])
   end
 
-  def did_user_accept_a_match_already_today?
+  def did_user_accept_a_match_already_today?(user)
+    # did user accept a match, if so, resend that match
+  end
+
+  def did_user_reject_a_match_today?(user)
+    # did user reject a match, if so, send message, only one per day
   end
 end

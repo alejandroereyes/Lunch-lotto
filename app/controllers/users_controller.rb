@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(email: params[:email], password: params[:password],
                         password_confirmation: params[:password_confirmation])
-    if @user
+    if @user.save
       render json: @user
     else
-      render json: { error: "User not saved" }, status: 500
+      render json: { error: "User not saved", params: params }, status: 500
     end
   end
 
