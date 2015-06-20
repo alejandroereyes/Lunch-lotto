@@ -4,8 +4,10 @@ var App = Backbone.Router.extend({
         '': 'home',
         'home': 'home',
         'profile': 'profile',
-        'signIn': 'signIn'
+        'signIn': 'signIn',
+        'logIn':'logIn'
     },
+
     home: function() {
       React.render(<Home/>, document.querySelector('#container'));
     },
@@ -14,7 +16,11 @@ var App = Backbone.Router.extend({
     },
     profile: function(){
         React.render(<Profile/>, document.querySelector('#container'));
+    },
+    logIn: function(){
+        React.render(<logIn/>, document.querySelector('#container'));
     }
+
     
 });
 
