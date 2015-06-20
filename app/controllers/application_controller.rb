@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   end
 
+  helper_method :current_user
+
   def authenticate_user!
     if current_user == nil
       redirect_to login_path, alert: "You must be logged in"
