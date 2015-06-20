@@ -6,7 +6,7 @@ var SigninPage= React.createClass({
 				<div>
 					<h1>Register</h1>
 					<form ref="registerForm" onSubmit = {this.register}>
-						<input type="text" placeholder="username" ref="registerUsername"/>
+						<input type="text" placeholder="Email" ref="registerEmail"/>
 						<input type="password" placeholder="password" ref="registerPassword"/>
 						<input type="password_confirmation" placeholder="password_confirmation" ref="passwordConfirmation"/>
 						<div className="error" ref="registerError"></div>
@@ -17,7 +17,7 @@ var SigninPage= React.createClass({
 				<div className="page" ref="login">
 					<h1>Login</h1>
 					<form ref="loginForm" onSubmit ={this.login}>
-						<input type="text" placeholder="username" ref="loginUsername"/>
+						<input type="text" placeholder="Email" ref="loginEmail"/>
 						<input type="password" placeholder="password" ref="loginPassword"/>
 						<div className="error" ref="loginError"></div>
 						<button type="submit">Login</button>
@@ -31,7 +31,7 @@ var SigninPage= React.createClass({
 	register: function(e){
 		e.preventDefault()
 		var newUser = new UserModel({
-			name: this.refs.registerUsername.getDOMNode().value,
+			email: this.refs.registerEmail.getDOMNode().value,
 			password: this.refs.registerPassword.getDOMNode().value,
 			password_confirmation: this.refs.passwordConfirmation.getDOMNode().value
 		}	
@@ -54,7 +54,7 @@ var SigninPage= React.createClass({
 	login: function(e){
 		e.preventDefault()
 		var currentUser = new UserModel({
-			name: this.refs.loginUsername.getDOMNode().value,
+			email: this.refs.loginEmail.getDOMNode().value,
 			password: this.refs.loginPassword.getDOMNode().value,
 		});
 
@@ -63,7 +63,7 @@ var SigninPage= React.createClass({
 		}
 		else{
 			loggedInUser = users.findWhere({
-				name: this.refs.loginUsername.getDOMNode().value,
+				email: this.refs.loginEmail.getDOMNode().value,
 				password: this.refs.loginPassword.getDOMNode().value,
 			});
 
