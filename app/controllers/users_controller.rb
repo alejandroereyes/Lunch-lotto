@@ -5,9 +5,16 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def show
+
+  end
+
   def new
     @user = User.new
     render json: @user
+  end
+
+  def get_a_match
   end
 
   def create

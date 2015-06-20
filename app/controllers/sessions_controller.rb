@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
 
     if user != nil && user.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: params
-      # redirect_to root_path, notice: "Welcome #{user.name}"
+      redirect_to user_path
     else
       flash[:alert] = "Hi, looks like your email or password does not match"
       render :new
