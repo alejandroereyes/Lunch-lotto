@@ -45,13 +45,13 @@ class UsersController < ApplicationController
 
   def update
     begin
-      # @user = User.find_by(session[:id])
-      @user = User.find_by(email: params[:email])
+      # @user = User.find_by(session[:id]) # use session id to find user
+      @user = User.find_by(email: params[:email]) # remove before deplay
       @user[:name]      = params[:name]
       @user[:network]   = params[:network]
       @user[:linked_in] = params[:linked_in] if @user[:linked_in] != params[:linked_in] && params[:twitter] != nil
       @user[:twitter]   = params[:twitter]   if @user[:twitter]   != params[:twitter]   && params[:twitter] != nil
-      @user[:email]     = params[:email]     if @user[:email]     != params[:email]
+      Food.enter_foods_via_user(@user, params)
       if @user.save
         render json: { message: "Your profile has been saved" }
       else

@@ -1,7 +1,13 @@
 class Match < ActiveRecord::Base
   has_many :messages
   belongs_to :user
+
+  def match_two_users_final(matched_user, current_user)
+    if User.find_by(user_id: user[:id])
+  end
+
   def self.match_two_users(matched_user, current_user)
+    # check if user has ever been matched
     # check if users have a match already
     # if can_this_user_be_mathed?
       match_id = SecureRandom.hex # generate unique match id
@@ -27,7 +33,8 @@ class Match < ActiveRecord::Base
   def does_user_have_pending_match?(user)
     _24_hours = 86400 #seconds
     # does user have a match pending? if so, resend that match
-    Match.where(user_id: user[:id])
+
+    current_user_match = Match.where(user_id: user[:id])
   end
 
   def did_user_accept_a_match_already_today?(user)
