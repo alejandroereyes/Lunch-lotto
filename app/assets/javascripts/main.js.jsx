@@ -6,7 +6,7 @@ var App = Backbone.Router.extend({
         'signIn': 'signIn'
     },
     home: function() {
-      React.render(<Home/>, document.querySelector('#container'));
+      React.render(<ome/>, document.querySelector('#container'));
     },
     signIn: function() {
       React.render(<SigninPage/>, document.querySelector('#container'));

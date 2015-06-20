@@ -41,7 +41,6 @@ var SigninPage= React.createClass({
 				$('#registerError').html(newUser.validationError);
 			}
 			else {
-				console.log('You should save the user');
 				newUser.save();
 				app.navigate('feed', {trigger: true});
 			}
@@ -62,7 +61,7 @@ var SigninPage= React.createClass({
 			$('#login-error').html(currentUser.validationError);
 		}
 		else{
-			loggedInUser = users.findWhere({
+			loggedInUser = user.findWhere({
 				name: this.refs.loginUsername.getDOMNode().value,
 				password: this.refs.loginPassword.getDOMNode().value,
 			});

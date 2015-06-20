@@ -6,7 +6,7 @@ var UserModel = Backbone.Model.extend ({
 		password_confirmation: null
 
 	},
-	urlRoot: 'localhost:3000/',
+	urlRoot: '/users',
 
 	validate: function(attr) {
 		if (!attr.name) {
