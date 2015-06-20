@@ -24,7 +24,7 @@ class Match < ActiveRecord::Base
     # end
   end
 
-  def not_already_matched_today?
+  def can_this_user_be_matched?
 
   end
 end
