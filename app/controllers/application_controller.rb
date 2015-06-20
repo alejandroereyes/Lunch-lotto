@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def current_user
-    @current_user ||= User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   helper_method :current_user
 
   def authenticate_user!
-    if current_user == nil
-      redirect_to login_path, alert: "You must be logged in"
+    if current_user != nil
+      true
     end
   end
 end
