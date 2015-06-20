@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :messages
 
+  resources :sessions
+
   root 'application#index'
 end
