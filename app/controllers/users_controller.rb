@@ -39,7 +39,26 @@ class UsersController < ApplicationController
     if @user.save
       render json: @user
     else
-      render json: { error: "User not saved", params: params }, status: 500
+      render json: { error: "User not saved" }, status: 500
+    end
+  end
+
+  def update
+    begin
+      # @user = User.find_by(session[:id])
+      @user = User.find_by(email: params[:email])
+      @user[:name]      = params[:name]
+      @user[:network]   = params[:network]
+      @user[:linked_in] = params[:linked_in] if @user[:linked_in] != params[:linked_in] && params[:twitter] != nil
+      @user[:twitter]   = params[:twitter]   if @user[:twitter]   != params[:twitter]   && params[:twitter] != nil
+      @user[:email]     = params[:email]     if @user[:email]     != params[:email]
+      if @user.save
+        render json: { message: "Your profile has been saved" }
+      else
+        render json: { error: "Your profile was not saved" }, status: 500
+      end
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { error: error.message }, status: 404
     end
   end
 
