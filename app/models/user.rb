@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
     # user random select, range is up to array length - 1, to select a random user
     pick = SecureRandom.random_number(possible_matches.size)
     paired_user = possible_matches[pick]
+    paired_user
   end
 
   def self.number_of_matches(paired_user, current_user)

@@ -28,10 +28,9 @@ class UsersController < ApplicationController
     @current_user         = User.find(params[:user_id]) # remove params and insert session before deploy
     @user_match           = User.match_a_user_to(@current_user) # find a match for user
     @user_match_hits      = User.matching_food_personalities(@user_match, @current_user)
-    # @matched_users_binder = Match.match_two_users(@user_match, @current_user)
+    @matched_users_binder = Match.match_two_users(@user_match, @current_user)
 
-    # render json: { matched_user: @user_match, match_hits: @user_match_hits, matched_users: @matched_users_binder }
-    render json: { matched_user: @user_match, match_hits: @user_match_hits }
+    render json: { matched_user: @user_match, match_hits: @user_match_hits, matched_users: @matched_users_binder }
   end
 
   def create
