@@ -1,9 +1,9 @@
-var Home = React.createClass({
+var LogIn = React.createClass({
     render: function () {
         return (
           <div>
           
-            <a href='#home'></a>
+            <a href='#logIn'></a>
           </div>
         );
     }

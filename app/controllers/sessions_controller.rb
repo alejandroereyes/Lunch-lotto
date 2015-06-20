@@ -14,6 +14,6 @@ class SessionsController < ApplicationController
   end
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    render json: {message:'see ya later'}
   end
 end
