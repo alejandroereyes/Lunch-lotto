@@ -1,8 +1,19 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Backreact</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+
+
+
+	<title>Lunch Box Lotto</title>
+
+	  <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 <body>
 	<nav>
@@ -12,7 +23,133 @@
 		<a href='#profile'> Profile </a>
 	</nav>
 
+<div id="container">
+
 	
+	<header class="col12">
+		<nav class="topnav">
+			<ul id="leftnav">
+				<li><img src="images/Lunchbox-logo.png" alt=""></li>
+				<li><h3>Lunch Lotto<h3></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="navbottom col12"></div>
+	<div class="col12 mainlinks">
+			<ul>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">TEST</a></li>
+			</ul>
+	</div>
+
+	<div class="Login-section col12">
+		<div class="col4 col-on col-off">Hidden at Global</div>
+		<div class="Signin col4">
+				
+			<!-- Form -->
+			<form class="signup-form" action="/" method="post">
+
+			<ul>
+				<li><img src="images/LunchboxOval.png" alt=""></li>
+	<!-- 					<h1 class="Signin-header">LOG IN</h1> -->
+			</ul>
+				<h3>Sign up</h3>
+				<h4>Already have an account? <a href="#">Log in</a></h4>
+				<div>
+					<label>
+						<span>Your Email:</span>
+						<input placeholder="Enter your email address" type="email" tabindex="1" required autofocus>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>Your Password:</span>
+						<input placeholder="Enter your password" type="password" tabindex="2" required>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>Confirm Password:</span>
+						<input placeholder="Confirm your password" type="password" tabindex="3" required>
+					</label>
+				</div>
+				<div class="submit-button">
+					<button name="submit" type="submit" id="signup-submit">Submit</button>
+				</div>
+			</form>
+
+		</div>
+		<div class="col4 col-on col-off">Hidden at Global</div>
+	</div>
+
+
+
+
+
+
+
+
+	<div class="profile-section col12">
+		<div class="col4 col-on col-off">Hidden at Global</div>
+		<div class="Profile-creation col4">
+				
+			<!-- Form -->
+			<form class="profile-form" action="/" method="post">
+
+			<ul>
+				<li><img src="images/LunchboxOval.png" alt=""></li>
+	<!-- 					<h1 class="Signin-header">LOG IN</h1> -->
+			</ul>
+				<h3>Create a Profile</h3>
+				<div>
+					<label>
+						<span>Your Name:</span>
+						<input placeholder="Enter your name" type="text" tabindex="1" required autofocus>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>Your Network Circle:</span>
+						<input placeholder="What industry interests you?" type="checkbox" tabindex="2" required>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>Your Favorite Food Types:</span>
+						<input placeholder="What type of foods do you prefer?" type="text" tabindex="3" required>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>Bio</span>
+						<input placeholder="What do you want people to know about you" type="text" tabindex="3" required>
+					</label>
+				</div>
+				<div>
+				<div>
+					<label>
+						<span>Twitter Profile</span>
+						<input placeholder="Add a link to your Twitter profile" type="text" tabindex="3" required>
+					</label>
+				</div>
+				<div>
+					<label>
+						<span>LinkedIn Profile</span>
+						<input placeholder="Add a link to your Linked in profile" type="text" tabindex="3" required>
+					</label>
+				</div>
+				<div class="submit-button">
+					<button name="submit" type="submit" id="signup-submit">Create Profile</button>
+				</div>
+			</form>
+
+		</div>
+		<div class="col4 col-on col-off">Hidden at Global</div>
+	</div>
+
+</div>
+
 
 
 	

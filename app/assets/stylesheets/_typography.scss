@@ -1,0 +1,17 @@
+////// Typography //////
+
+$headline-stack: 'Source Sans Pro', sans-serif;
+$body-stack: 'Source Sans Pro', sans-serif;
+
+
+
+body {
+  font-size: 16px;
+  font-style: normal;
+  font-family: $body-stack;
+}
+
+#leftnav h3 {
+	font-size: 24px;
+	color: #E35460;
+}
