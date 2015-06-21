@@ -18,6 +18,8 @@
 
 	  
 </head>
+
+
 <body>
 	<nav>
 		<a href='#home'> home </a>
@@ -31,7 +33,7 @@
 			<header class="col12">
 			<nav class="topnav">
 				<ul id="leftnav">
-					<li><img src="images/Lunchbox-logo.png" alt=""></li>
+					<li><img src="assets/Lunchbox-logo" alt=""></li>
 					<li><h3>Lunch Lotto<h3></li>
 				</ul>
 			</nav>
@@ -57,7 +59,7 @@
 			<form class="signup-form" action="/" method="post">
 
 			<ul>
-				<li><img src="assets/Lunchbox-logo" alt=""></li>
+				<li><img src="assets/Lunchbox-signin" alt=""></li>
 	<!-- 					<h1 class="Signin-header">LOG IN</h1> -->
 			</ul>
 				<h3>Sign up</h3>
@@ -91,20 +93,15 @@
 
 
 
-
-
-
-
-
-<!-- 	<div class="profile-section col12">
+	<div class="profile-section col12">
 		<div class="col4 col-on col-off">Hidden at Global</div>
-		<div class="Profile-creation col4">
+		<div class="profile-creation col4">
 				
 
 			<form class="profile-form" action="/" method="post">
 
 			<ul>
-				<li><img src="assets/Lunchbox-logo" alt=""></li>
+				<li><img src="assets/profilechief" alt=""></li>
 			</ul>
 				<h3>Create a Profile</h3>
 				<div>
@@ -115,23 +112,87 @@
 				</div>
 				<div>
 					<label>
-						<span>Your Network Circle:</span>
-						<input placeholder="What industry interests you?" type="checkbox" tabindex="2" required>
-					</label>
-				</div>
-				<div>
-					<label>
-						<span>Your Favorite Food Types:</span>
-						<input placeholder="What type of foods do you prefer?" type="text" tabindex="3" required>
-					</label>
-				</div>
-				<div>
-					<label>
 						<span>Bio</span>
-						<input placeholder="What do you want people to know about you" type="text" tabindex="3" required>
+						<textarea name="comments" placeholder="What do you want people to know about you" rows="3" maxlength="200" cols="60"></textarea>
 					</label>
 				</div>
 				<div>
+					<label>
+						<span>Your Network Circle:</span>
+							  <select name="Network-Circle">
+							    <option value="Creative">Creative</option>
+							    <option value="Engineering">Engineering</option>
+							    <option value="Design">Design</option>
+							    <option value="Product Management">Product Managment</option>
+							    <option value="Venture Capitalist">Venture Capitalist</option>
+							    <option value="Founder/CEO">Founder/CEO</option>
+							  </select>
+					</label>
+				</div>
+
+				<div class="foodtypes">
+
+					<label>
+					<span>Your Favorite Food Types:</span>
+					</label>
+					<ul>
+						<li>
+							<input type="checkbox" name="EasyBreezy" id="EB" value="25">
+			        		<label for="1">
+				      		<b>Easy Breezy</b>
+					      		<div class="food-box">
+					      		<p class="food-description">You have a zest for quick and easy food. Fast food is not a bad word. It can be a positively tasty experience given the right price.
+					      		</p> 
+					      		<img src="assets/fastfood" alt="">	
+					      		</div>			  
+			        		</label>
+						</li>
+						<li>
+							<input type="checkbox" name="HealthNut" id="HN" value="25">
+			        		<label for="2">
+				      		<b>Health Nut</b>
+					      		<div class="food-box">
+					      		<p class="food-description">Eating healthy nutritious meals is a lifestyle you cant ignore. While others may view food as secondary, you see it as a key to improving your overall well being. Heres to good health!
+					      		</p>
+						      	<img src="assets/healthy1" alt="">	
+					      		</div> 
+			        		</label>
+						</li>
+						<li>
+					        <input type="checkbox" name="WildChild" id="WC" value="25">
+					        <label for="3">
+						      <b>Wild Child</b>
+					      	<div class="food-box">						      
+					      		<p class="food-description">You love great food no matter where it takes you. Food Trucks, taco stands, and exotic local cuisines are staples. Nothing is off limits in your eyes. Bon appetite!
+					      		</p>
+					      		<img src="assets/wildchild" alt="">
+				      		</div>				      		 
+					        </label>
+						</li>
+					        <input type="checkbox" name="LuxeLunch" id="luxe" value="25">
+					        <label for="4">
+						      <b>Luxe Lunch</b>
+		      					<div class="food-box">	
+					      		<p class="food-description">The right dining experience isn't cheap and your willing to pay the price as long as they provide excellent service and impeccable food! Where's the next adventure?
+					      		</p>
+						      	<img src="assets/luxe" alt="">				      		
+						      	</div> 
+			        		</label>		
+						</li>
+						<li>
+							<input type="checkbox" name="Casual Comfort" id="CSD" value="25">
+			        		<label for="5">
+				      		<b>Casual Comfort</b>
+					      		<div class="food-box">	
+					      		<p class="food-description">Sometimes the best things take time. Its all about atmosphere and your always looking for the next place to call home. A nice coffee, tea or drink at a local joint where everyone knows your name. Cheers!
+					      		</p> 
+					      		<img src="assets/tea" alt="">
+					      		</div>				      		
+			        		</label>
+						</li>
+					</ul>
+				</div>
+
 				<div>
 					<label>
 						<span>Twitter Profile</span>
@@ -153,7 +214,51 @@
 		<div class="col4 col-on col-off">Hidden at Global</div>
 	</div>
 
-</div> -->
+
+	<div class="Login-section col12">
+		<div class="col4 col-on col-off">Hidden at Global</div>
+		<div class="Signin col4">
+				
+			<!-- Form -->
+			<form class="signup-form" action="/" method="post">
+
+			<ul>
+				<li><img src="assets/question-mark" alt=""></li>
+	<!-- 					<h1 class="Signin-header">LOG IN</h1> -->
+			</ul>
+				<h3>Let's find a new connection!</h3>
+				<div class="Discovermatch-description">
+					<label>
+					We will do our best to match you with someone with the same desired Network Circle and Food preferences.
+					</label>
+
+				<div class="Discoverymatch-images">	
+					<ul>
+						<li><img src="assets/sushi" alt=""></li>
+						<li><img src="assets/hamburger" alt=""></li>
+						<li><img src="assets/apple" alt=""></li>
+					</ul>
+				</div>
+
+				</div>
+				<div class="Discovermatch-breadcrumb">
+					Click the button below to find to discover new people to connect with.
+				</div>
+				<div class="connection-button">
+					<button name="submit" type="submit" id="signup-submit">Find a Connection</button>
+				</div>
+			</form>
+
+		</div>
+		<div class="col4 col-on col-off">Hidden at Global</div>
+	</div>
+
+
+
+
+
+
+</div>
 
 			
 <!--   <div id='container'>
