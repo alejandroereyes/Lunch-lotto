@@ -4,20 +4,34 @@ var App = Backbone.Router.extend({
         '': 'home',
         'home': 'home',
         'profile': 'profile',
-        'signIn': 'signIn',
+        'register': 'register',
         'logIn':'logIn'
+
     },
 
     home: function() {
+        $(".signup-form").hide(),
+        $(".profile-form").hide(),
       React.render(<Home/>, document.querySelector('#container'));
     },
-    signIn: function() {
-      React.render(<SigninPage/>, document.querySelector('#container'));
+    register: function() {
+        $("#signup-page").show(),
+        $(".profile-form").hide(),
+        $("#login-page").hide(),
+      React.render(<register/>, document.querySelector('#container'));
     },
     profile: function(){
+        $(".signup-form").hide(),
+        $(".profile-form").show(),
         React.render(<Profile/>, document.querySelector('#container'));
     },
     logIn: function(){
+        $("#login-page").show(),
+        $(".profile-form").hide(),
+        $("#signup-page").hide(),
+
+        
+        // $(".profile-form").hide(),
         React.render(<logIn/>, document.querySelector('#container'));
     }
 
