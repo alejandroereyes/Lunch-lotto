@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
     t.string   "network"
     t.string   "linked_in"
     t.string   "twitter"
+    t.text     "bio"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
