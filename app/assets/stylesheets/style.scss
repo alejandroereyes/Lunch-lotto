@@ -76,18 +76,13 @@
 
 ///////SIGN UP SECTION///////
 
-.Login-section {
+.General-section {
 	background-color: #F1F1F1;
 	display:flex;
 	justify-content:center;
 	align-items:center;
 	text-align: center;
 		
-	// .Login-section:nth-child(1n){
- //  		background: lightsteelblue;
- //  		display: none;
-	// }
-
 
 	.col-off {
 		display:none;
@@ -113,6 +108,7 @@
 	}
 }
 
+///////PROFILE SECTION///////
 
 .profile-section {
 	background-color: #F1F1F1;
@@ -186,7 +182,7 @@
 
 @media screen and (min-width: 600px) {
 
-	.Login-section {
+	.General-section {
 		
 		.col-on {
 			display:block;
