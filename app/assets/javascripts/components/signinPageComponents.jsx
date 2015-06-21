@@ -1,5 +1,5 @@
 
-var SigninPage= React.createClass({
+var Register= React.createClass({
 	render: function() {
 		return (
 			<section className="page" ref="register">
