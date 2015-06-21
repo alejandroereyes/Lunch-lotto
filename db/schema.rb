@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
   add_index "foods", ["user_id"], name: "index_foods_on_user_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
-    t.string   "match_id"
+    t.string   "event_id"
     t.integer  "pair"
     t.boolean  "accept"
     t.string   "day"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "post"
+    t.string   "event_id"
     t.integer  "user_id"
     t.integer  "match_id"
     t.datetime "created_at", null: false
