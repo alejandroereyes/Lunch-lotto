@@ -2,46 +2,40 @@ class Match < ActiveRecord::Base
   has_many :messages
   belongs_to :user
 
-  def match_two_users_final(matched_user, current_user)
-    if User.find_by(user_id: user[:id])
-  end
-
   def self.match_two_users(matched_user, current_user)
-    # check if user has ever been matched
-    # check if users have a match already
-    # if can_this_user_be_mathed?
+    # check if user has been matched already
+    if user_has_a_match_today?(matched_user, current_user)
+      { current: find_match_for(current_user), matched: find_match_for(matched_user) }
+    else
       match_id = SecureRandom.hex # generate unique match id
       @current_user_match = Match.new # create new match for current
       @matched_user_match = Match.new # create new match for matched user
       # fill out fields for current user & save
-      @current_user_match[:match_id] = match_id
-      @current_user_match[:user_id] = current_user[:id]
-      @current_user_match[:pair] = matched_user[:id]
+      @current_user_match[:match_id]   = match_id
+      @current_user_match[:user_id]    = current_user[:id]
+      @current_user_match[:pair]       = matched_user[:id]
+      @current_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
       @current_user_match.save
       # fill out fields for matched user & save
-      @matched_user_match[:match_id] = match_id
-      @matched_user_match[:user_id] = matched_user[:id]
-      @matched_user_match[:pair] = current_user[:id]
+      @matched_user_match[:match_id]   = match_id
+      @matched_user_match[:user_id]    = matched_user[:id]
+      @matched_user_match[:pair]       = current_user[:id]
+      @matched_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
       @matched_user_match.save
       # return match id
       { current: @current_user_match, matched: @matched_user_match }
-    # else
-    #   render json: { error: "Sorry, you can only be paried once a day" }, status: 423
-    # end
+    end
   end
 
-  def does_user_have_pending_match?(user)
-    _24_hours = 86400 #seconds
-    # does user have a match pending? if so, resend that match
-
-    current_user_match = Match.where(user_id: user[:id])
+  def self.user_has_a_match_today?(matched_user, current_user)
+    if find_match_for(current_user)
+      true
+    else
+      false
+    end
   end
 
-  def did_user_accept_a_match_already_today?(user)
-    # did user accept a match, if so, resend that match
-  end
-
-  def did_user_reject_a_match_today?(user)
-    # did user reject a match, if so, send message, only one per day
+  def self.find_match_for(user)
+    user.matches.find_by(day: "#{Time.now.strftime("%m/%d/%Y")}")
   end
 end

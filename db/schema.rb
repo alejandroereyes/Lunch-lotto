@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
     t.string   "match_id"
     t.integer  "pair"
     t.boolean  "accept"
+    t.string   "day"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
