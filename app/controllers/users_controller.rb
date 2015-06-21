@@ -1,22 +1,31 @@
 class UsersController < ApplicationController
 
-  def index
-
-    @user = User.all
-    render json: @user
-  end
-
   def show
-    if authenticate_user!
+    # if authenticate_user!
       begin
-        @user = User.find(session(:user_id))
-        render json: @user
+        @user = User.find(params[:id]) # replace with session before deploy
+        @foods = @user.foods.first
+        render json: { user: @user, foods: @foods }
       rescue ActiveRecord::RecordNotFound => error
         render json: { error: "User not Found" }, status: 404
       end
-    else
-      render json: { error: "Access Denied" }, status: 407
-    end
+    # else
+      # render json: { error: "Access Denied" }, status: 407
+    # end
+  end
+
+  def profile # show current user profile
+    # if authenticate_user!
+      begin
+        @user = User.find(params[:id]) # replace with session before deploy
+        @foods = @user.foods.first
+        render json: { user: @user, foods: @foods }
+      rescue ActiveRecord::RecordNotFound => error
+        render json: { error: "User not Found" }, status: 404
+      end
+    # else
+      # render json: { error: "Access Denied" }, status: 407
+    # end
   end
 
   def new
@@ -67,8 +76,12 @@ class UsersController < ApplicationController
   end
 
   def destory
-    @user = User.find_by_email(params[:email])
-    @user.destory
-    redirect_to root_path
+    # if authenticate_user!
+      @user = User.find_by_email(params[:email])
+      @user.destory
+      redirect_to root_path
+      # else
+      # render json: { error: "Access Denied" }, status: 407
+    # end
   end
 end
