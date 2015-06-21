@@ -9,19 +9,32 @@ var UserModel = Backbone.Model.extend ({
 	urlRoot: '/users',
 
 	validate: function(attr) {
-		if (!attr.name) {
-			return 'Enter a Username to Lunch!';
-		}
-		else if(!attr.password){
-			return 'Please enter a password to Lunch!'; 
 
-		}
-		// else if(!validator.isAlphanumeric(attr.name)) {
-		// 	return 'Username must only contain letters and numbers.';
+		console.log(attr);
+		// if (!attr.email) {
+		// 	return 'Enter a Email to Lunch!';
+		// 	console.log(attr);
+		// }	
+		// else if(!attr.email(/\S+@\S+\.\S+/)) {
+		// 	return 'Return false';
 		// }
-		else if(attr.password.length < 6) {
-			return 'Your password must be at least six characters.';
-		}
-		return false;
+		// else if( attr.indexOf(' ')!=-1 || attr.indexOf('..')!=-1){
+  //       	return false;
+  //   	}
+  //   	else {
+  //   		return true;
+  //   	};
+		// if(!attr.password){
+		// 	return 'Please enter a password to Lunch!'; 
+		// }
+		
+		
+		
+		// if(attr.password.length < 6) {
+		// 	return 'Your password must be at least six characters.';
+		// }
+		// return false;
 	}
-});
+})
+
+

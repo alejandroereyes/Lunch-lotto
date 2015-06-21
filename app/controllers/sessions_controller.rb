@@ -14,6 +14,6 @@ class SessionsController < ApplicationController
   end
   def destroy
     session[:user_id] = nil
-    render json: { message: "You have logged out, see ya later" }
+    render json: { message:'see ya later' }
   end
 end
