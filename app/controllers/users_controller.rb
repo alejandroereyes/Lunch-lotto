@@ -36,10 +36,33 @@ class UsersController < ApplicationController
   def create
     @user = User.create(email: params[:email], password: params[:password],
                         password_confirmation: params[:password_confirmation])
-    if @user
+    if @user.save
       render json: @user
     else
       render json: { error: "User not saved" }, status: 500
+    end
+  end
+
+  def update
+    begin
+      # @user = User.find_by(session[:id]) # use session id to find user
+      @user = User.find_by(email: params[:email]) # remove before deplay
+
+      @user[:name]      = params[:name]
+      @user[:network]   = params[:network]
+      @user[:bio]       = params[:bio]       if @user[:bio]       != params[:bio]       && params[:bio]     != nil
+      @user[:linked_in] = params[:linked_in] if @user[:linked_in] != params[:linked_in] && params[:twitter] != nil
+      @user[:twitter]   = params[:twitter]   if @user[:twitter]   != params[:twitter]   && params[:twitter] != nil
+
+      Food.enter_foods_via_user(@user, params)
+
+      if @user.save
+        render json: { message: "Your profile has been saved" }
+      else
+        render json: { error: "Your profile was not saved" }, status: 500
+      end
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { error: error.message }, status: 404
     end
   end
 

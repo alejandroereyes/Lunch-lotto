@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :network
       t.string :linked_in
       t.string :twitter
+      t.text   :bio
 
       t.timestamps null: false
     end

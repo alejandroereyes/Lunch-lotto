@@ -3,25 +3,40 @@ class User < ActiveRecord::Base
   has_many :foods, dependent: :destroy
   has_many :matches, dependent: :destroy
   has_many :messages, dependent: :destroy
-  validates :name, presence: { message: "Hi, looks like you forgot to add your name." }
+  validates :email, presence: { message: "Hi, looks like you forgot to add your email." }
 
   def self.match_a_user_to(user)
     current_user = user #get current user
-    requested_network = current_user[:network] # get current user's network
-    users_in_network = User.where(network: requested_network) #find all user's who match network
-    # find all user's who match on 3 columns
-    possible_matches = []
-    # look at each user in network
-    users_in_network.each do |user|
-      # check to see how many matches they have with current user
-      good_match = number_of_matches(user, current_user)
-      # store any user who hits 3+ matches in an array
-      possible_matches << user if good_match >= 3 && user[:id] != current_user[:id]
-    end
+    if has_a_match_today?(current_user)
+      paired_user = User.find(current_user.matches[0][:pair])
+      paired_user
+    else
+      requested_network = current_user[:network] # get current user's network
+      users_in_network = User.where(network: requested_network) #find all user's who match network
+      # find all user's who match on 3 columns
+      possible_matches = []
+      # look at each user in network
+      users_in_network.each do |user|
+        # check to see how many matches they have with current user
+        good_match = number_of_matches(user, current_user)
+        # store any user who hits 3+ matches in an array
+        possible_matches << user if good_match >= 3 &&
+                                    user[:id] != current_user[:id] &&
+                                  !(has_a_match_today?(user))
+      end
     # user random select, range is up to array length - 1, to select a random user
-    pick = SecureRandom.random_number(possible_matches.size)
-    paired_user = possible_matches[pick]
-    paired_user
+      pick = SecureRandom.random_number(possible_matches.size)
+      paired_user = possible_matches[pick]
+      paired_user
+    end
+  end
+
+  def self.has_a_match_today?(user)
+    if user.matches.exists?(day: "#{Time.now.strftime("%m/%d/%Y")}")
+      true
+    else
+      false
+    end
   end
 
   def self.number_of_matches(paired_user, current_user)

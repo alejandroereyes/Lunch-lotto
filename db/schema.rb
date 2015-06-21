@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 20150619002618) do
   create_table "matches", force: :cascade do |t|
     t.string   "match_id"
     t.integer  "pair"
-    t.boolean  "accept",     default: false
+    t.boolean  "accept"
+    t.string   "day"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "matches", ["user_id"], name: "index_matches_on_user_id", using: :btree
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150619002618) do
     t.string   "network"
     t.string   "linked_in"
     t.string   "twitter"
+    t.text     "bio"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

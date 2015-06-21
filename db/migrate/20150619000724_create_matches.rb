@@ -1,9 +1,10 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
-      t.string :match_id
+      t.string  :match_id
       t.integer :pair
-      t.boolean :accept, default: false
+      t.boolean :accept
+      t.string  :day
       t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps null: false
