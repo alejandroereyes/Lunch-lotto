@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
         # store any user who hits 3+ matches in an array
         possible_matches << user if good_match >= 3 &&
                                     user[:id] != current_user[:id] &&
-                                  !(has_a_match_today?(user))
+                                    !(has_a_match_today?(user))
       end
     # user random select, range is up to array length - 1, to select a random user
       pick = SecureRandom.random_number(possible_matches.size)
