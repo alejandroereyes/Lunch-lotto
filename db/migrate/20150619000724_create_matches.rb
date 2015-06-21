@@ -1,7 +1,7 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
-      t.string  :match_id
+      t.string  :event_id
       t.integer :pair
       t.boolean :accept
       t.string  :day
