@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: user
+      render json: { user: user, message: "hey you made it to the sessions controller"}
     else
       render json: { error: "User data does not match" }, status: 421
     end

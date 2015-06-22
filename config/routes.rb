@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   post 'users/match', to: 'users#get_a_match'
 
-  get 'users/profile', to: 'users#profile'
+  get 'profile', to: 'users#profile'
 
   resources :users
 
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :messages
 
-  get  'login', to: 'sessions#new',    as: 'login'
-  post 'login', to: 'sessions#create', as: 'create_session'
+
+  post 'login', to: 'sessions#create', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root 'application#index'

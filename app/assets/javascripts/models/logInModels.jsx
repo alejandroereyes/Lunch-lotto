@@ -6,6 +6,6 @@ var LoginModel = Backbone.Model.extend ({
 		password_confirmation: null
 
 	},
-	urlRoot: 'http:localhost:3000/login',
+	urlRoot: 'http:localhost:3000',
 	idAttribute: '_id'
 });

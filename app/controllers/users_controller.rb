@@ -28,21 +28,6 @@ class UsersController < ApplicationController
     # end
   end
 
-  # def current_user_matches
-  #   begin
-  #     all_user_matches = Match.where(user_id: params[:user_id]) # user id to find all of user's matchs rows
-  #     all_match_ids = []
-
-  #     all_user_matches.each { |row| all_match_ids << row[:pair] } # iterate over match rows and store pair ids into matches_array
-
-  #     @match_history = []
-  #     all_match_ids.each { |user| @match_history << {user: user, foods: user.foods} } # iterate over matches_array and pull users info and foods info
-  #     # render object with all matches profiles
-  #   rescue ActiveRecord::RecordNotFound => error
-  #     render json: { error: "No matches" }, status: 404
-  #   end
-  # end
-
   def new
     @user = User.new
     render json: @user
@@ -99,4 +84,19 @@ class UsersController < ApplicationController
       # render json: { error: "Access Denied" }, status: 407
     # end
   end
+
+    # def current_user_matches
+  #   begin
+  #     all_user_matches = Match.where(user_id: params[:user_id]) # user id to find all of user's matchs rows
+  #     all_match_ids = []
+
+  #     all_user_matches.each { |row| all_match_ids << row[:pair] } # iterate over match rows and store pair ids into matches_array
+
+  #     @match_history = []
+  #     all_match_ids.each { |user| @match_history << {user: user, foods: user.foods} } # iterate over matches_array and pull users info and foods info
+  #     # render object with all matches profiles
+  #   rescue ActiveRecord::RecordNotFound => error
+  #     render json: { error: "No matches" }, status: 404
+  #   end
+  # end
 end

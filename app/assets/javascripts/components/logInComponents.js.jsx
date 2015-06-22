@@ -44,13 +44,13 @@ var LogIn= React.createClass({
 
 		if(currentUser.isValid()) {
 			$.post(
-				'http://localhost:3000/login',
+				'/login',
 				currentUser.attributes
 				)
 
 			.success(function(user){
-				App.navigate('users/profile', {trigger:true});
-				console.log('success');
+				App.navigate('/profile', {trigger:true});
+				console.log('success', currentUser.attributes);
 			})
 			.error(function(error){
 				console.log('get error')
