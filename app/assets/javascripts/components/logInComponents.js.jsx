@@ -12,13 +12,13 @@ var LogIn= React.createClass({
 					<div>
 						<label>
 							<span>Your Email:</span>
-							<input placeholder="Enter your email address" type="email" tabindex="1" autofocus ref="loginEmail"/>
+							<input placeholder="Enter your email address" type="email" tabIndex="1" autofocus ref="loginEmail"/>
 						</label>
 					</div>
 					<div>
 						<label>
 							<span>Your Password:</span>
-							<input placeholder="Enter your password" type="password" tabindex="2" ref="loginPassword"/>
+							<input placeholder="Enter your password" type="password" tabIndex="2" ref="loginPassword"/>
 						</label>
 					</div>
 					<div className="error" ref="loginError"></div>
@@ -39,6 +39,14 @@ var LogIn= React.createClass({
 			email: this.refs.loginEmail.getDOMNode().value,
 			password: this.refs.loginPassword.getDOMNode().value,
 		});
+
+		if(!currentUser.isValid()) {
+			this.refs.loginError.getDOMNode().innerHTML = newUser.validationError;
+		}
+		else {
+			newUser.save();
+			app.navigate('profile', {trigger: true});
+		};
 	},
 
 });
