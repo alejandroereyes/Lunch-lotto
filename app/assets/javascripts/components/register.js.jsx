@@ -1,10 +1,10 @@
-var Register = React.createClass({
-    render: function () {
-        return (
-          <div>
+// var Register = React.createClass({
+//     render: function () {
+//         return (
+//           <div>
           
-            <a href='#register'></a>
-          </div>
-        );
-    }
-});
+//             <a href='#register'></a>
+//           </div>
+//         );
+//     }
+// });

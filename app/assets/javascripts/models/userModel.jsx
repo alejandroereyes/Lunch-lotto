@@ -11,10 +11,10 @@ var UserModel = Backbone.Model.extend ({
 	validate: function(attr) {
 
 		console.log(attr);
-		// if (!attr.email) {
-		// 	return 'Enter a Email to Lunch!';
-		// 	console.log(attr);
-		// }	
+		if (!attr.email) {
+			return 'Enter a Email to Lunch!';
+			console.log(attr);
+		}
 		// else if(!attr.email(/\S+@\S+\.\S+/)) {
 		// 	return 'Return false';
 		// }
