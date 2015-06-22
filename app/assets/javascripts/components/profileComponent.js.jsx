@@ -22,7 +22,7 @@ var Profile = React.createClass({
 							<div>
 								<label>
 									<span>Your Network Circle:</span>
-										  <select name="Network-Circle" ref="networkCircle">
+										  <select name="Network-Circle" ref="network">
 										    <option value="Creative">Creative</option>
 										    <option value="Engineering">Engineering</option>
 										    <option value="Design">Design</option>
@@ -129,7 +129,7 @@ var Profile = React.createClass({
 		var newUser = new ProfileModel({
 			name: this.refs.registerName.getDOMNode().value,
 			bio: this.refs.registerBio.getDOMNode().value,
-			networkCircle: this.refs.networkCircle.getDOMNode().value,
+			network: this.refs.network.getDOMNode().value,
 			foodTypes: this.refs.foodTypes.getDOMNode().value,
 			twitter: this.refs.tweet.getDOMNode().value,
 			linkedIn: this.refs.linkedIn.getDOMNode().value
