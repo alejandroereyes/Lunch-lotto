@@ -12,19 +12,19 @@ var Register= React.createClass({
 						<div>
 							<label>
 								<span>Your Email:</span>
-								<input placeholder="Enter your email address" type="text" tabindex="1" autofocus ref="registerEmail" />
+								<input placeholder="Enter your email address" type="text" tabIndex="1" autofocus ref="registerEmail" />
 							</label>
 						</div>
 						<div>
 							<label>
 								<span>Your Password:</span>
-								<input placeholder="Enter your password" type="password" tabindex="2" required ref="registerPassword" />
+								<input placeholder="Enter your password" type="password" tabIndex="2" required ref="registerPassword" />
 							</label>
 						</div>
 						<div>
 							<label>
 								<span>Confirm Password:</span>
-								<input placeholder="Confirm your password" type="password" tabindex="3" required ref="passwordConfirmation" />
+								<input placeholder="Confirm your password" type="password" tabIndex="3" required ref="passwordConfirmation" />
 							</label>
 						</div>
 						<div className="error" ref="registerError"></div>
