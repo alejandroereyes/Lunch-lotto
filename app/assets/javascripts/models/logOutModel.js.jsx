@@ -7,6 +7,6 @@ var LogoutModel = Backbone.Model.extend ({
 		password_confirmation: null
 
 	},
-	urlRoot: '/logout',
-
+	urlRoot: 'http:localhost:3000/logout',
+	idAttribute: '_id'
 });

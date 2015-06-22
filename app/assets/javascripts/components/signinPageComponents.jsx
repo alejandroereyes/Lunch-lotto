@@ -32,8 +32,9 @@ var Register= React.createClass({
 							<button name="submit" type="submit" id="signup-submit">Submit</button>
 						</div>
 					</form>
-					
+
 				</div>
+				<div className="col4 col-on col-off"></div>
 			</div>
 		);
 	},
@@ -59,13 +60,13 @@ var Register= React.createClass({
 
 
 });
-		
+
 
 		// newUser.save()
 		// console.log(newUser)
-	
-	
-	
+
+
+
 
 		// if(!currentUser.isValid()){
 		// 	$('#login-error').html(currentUser.validationError);
@@ -82,8 +83,8 @@ var Register= React.createClass({
 	// logout: function(e){
 	// 		e.preventDefault()
 	// 		var currentUser = new logoutModel({
-	// 		button: this.refs.logOut.getDOMNode().value,	
-		
+	// 		button: this.refs.logOut.getDOMNode().value,
+
 	// 	});
 	// },
 

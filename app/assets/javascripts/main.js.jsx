@@ -5,7 +5,8 @@ var App = Backbone.Router.extend({
         'home': 'home',
         'profile': 'profile',
         'register': 'register',
-        'logIn':'logIn'
+        'logIn':'logIn',
+        'users/profile':'users/profile'
 
     },
 

@@ -3,9 +3,9 @@ var LogIn= React.createClass({
 	render: function() {
 		return (
 			<div className="General-section col12">
-				<div className="col4 col-on col-off">Hidden at Global</div>
+				<div className="col4 col-on col-off"></div>
 				<div className="Signin col4">
-				<form className="signup-form" id="login-page" onSubmit = {this.register}>
+				<form className="signup-form" id="login-page" onSubmit = {this.login}>
 					<ul><li><img src="assets/Lunchbox-signin" alt=""></img></li></ul>
 					<h3>Login</h3>
 					<h4>New to Lunch Lotto? <a href="#register">Register Today!</a></h4>
@@ -28,6 +28,7 @@ var LogIn= React.createClass({
 				</form>
 
 			</div>
+			<div className="col4 col-on col-off"></div>
 		</div>
 	);
 
@@ -35,18 +36,31 @@ var LogIn= React.createClass({
 
 	login: function(e){
 		e.preventDefault()
+		var self = this;
 		var currentUser = new UserModel({
 			email: this.refs.loginEmail.getDOMNode().value,
 			password: this.refs.loginPassword.getDOMNode().value,
 		});
 
-		if(!currentUser.isValid()) {
-			this.refs.loginError.getDOMNode().innerHTML = newUser.validationError;
+		if(currentUser.isValid()) {
+			$.post(
+				'http://localhost:3000/login',
+				currentUser.attributes
+				)
+
+			.success(function(user){
+				App.navigate('users/profile', {trigger:true});
+				console.log('success');
+			})
+			.error(function(error){
+				console.log('get error')
+			self.refs.loginError.getDOMNode().innerHTML = error.responseJSON.error;
+		});
 		}
 		else {
-			newUser.save();
-			app.navigate('profile', {trigger: true});
-		};
-	},
+			console.log('js error');
+			this.refs.loginError.getDOMNode().innerHTML = currentUser.validationError;
+		}
+	}
 
 });
