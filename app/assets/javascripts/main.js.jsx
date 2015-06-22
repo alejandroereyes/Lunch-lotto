@@ -22,13 +22,13 @@ var App = Backbone.Router.extend({
         React.render(<LogIn/>, document.querySelector('#container'));
     }
 
-    
+
 });
 
 var app = new App();
 Backbone.history.start();
 app.navigate('home');
 
- 
+
 
 
