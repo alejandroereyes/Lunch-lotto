@@ -26,11 +26,11 @@ var UserModel = Backbone.Model.extend ({
   //   		return true;
   //   	};
 		// if(!attr.password){
-		// 	return 'Please enter a password to Lunch!'; 
+		// 	return 'Please enter a password to Lunch!';
 		// }
-		
-		
-		
+
+
+
 		// if(attr.password.length < 6) {
 		// 	return 'Your password must be at least six characters.';
 		// }

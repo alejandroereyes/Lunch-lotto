@@ -45,9 +45,9 @@ var Profile = React.createClass({
 							      		<b>Easy Breezy</b>
 								      		<div className="food-box">
 								      		<p className="food-description">You have a zest for quick and easy food. Fast food is not a bad word. It can be a positively tasty experience given the right price.
-								      		</p> 
-								      		<img src="assets/fastfood" alt=""></img>	
-								      		</div>			  
+								      		</p>
+								      		<img src="assets/fastfood" alt=""></img>
+								      		</div>
 						        		</label>
 									</li>
 									<li>
@@ -57,41 +57,41 @@ var Profile = React.createClass({
 								      		<div className="food-box">
 								      		<p className="food-description">Eating healthy nutritious meals is a lifestyle you cant ignore. While others may view food as secondary, you see it as a key to improving your overall well being. Heres to good health!
 								      		</p>
-									      	<img src="assets/healthy1" alt=""></img>	
-								      		</div> 
+									      	<img src="assets/healthy1" alt=""></img>
+								      		</div>
 						        		</label>
 									</li>
 									<li>
 								        <input type="checkbox" name="WildChild" id="WC" value="25"/>
 								        <label form="3">
 									      <b>Wild Child</b>
-								      	<div className="food-box">						      
+								      	<div className="food-box">
 								      		<p className="food-description">You love great food no matter where it takes you. Food Trucks, taco stands, and exotic local cuisines are staples. Nothing is off limits! Where is the next adventure?
 								      		</p>
 								      		<img src="assets/wildchild" alt=""></img>
-							      		</div>				      		 
+							      		</div>
 								        </label>
 									</li>
 									<li>
 								        <input type="checkbox" name="LuxeLunch" id="luxe" value="25"/>
 								        <label form="4">
 									      <b>Luxe Lunch</b>
-					      					<div className="food-box">	
+					      					<div className="food-box">
 								      		<p className="food-description">The right dining experience is not cheap and your willing to pay the price as long as they provide excellent service and impeccable food! Bon appetite!
 								      		</p>
-									      	<img src="assets/luxe" alt=""></img>			      		
-									      	</div> 
-						        		</label>		
+									      	<img src="assets/luxe" alt=""></img>
+									      	</div>
+						        		</label>
 									</li>
 									<li>
 										<input type="checkbox" name="Casual Comfort" id="CSD" value="25"/>
 						        		<label form="5">
 							      		<b>Casual Comfort</b>
-								      		<div className="food-box">	
+								      		<div className="food-box">
 								      		<p className="food-description">Your always looking for the next place to call home. You love atmosphere and you know sometimes the best things are simply a great coffee or drink at a local joint where everyone knows your name. Cheers!
-								      		</p> 
+								      		</p>
 								      		<img src="assets/tea" alt=""></img>
-								      		</div>				      		
+								      		</div>
 						        		</label>
 									</li>
 								</ul>
@@ -118,7 +118,7 @@ var Profile = React.createClass({
 					</div>
 					<div className="col4 col-on col-off"></div>
 				</div>
-         
+
         );
     },
 

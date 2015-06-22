@@ -50,7 +50,7 @@ var LogIn= React.createClass({
 
 			.success(function(user){
 				App.navigate('/profile', {trigger:true});
-				console.log('success', currentUser.attributes);
+				console.log('success');
 			})
 			.error(function(error){
 				console.log('get error')
