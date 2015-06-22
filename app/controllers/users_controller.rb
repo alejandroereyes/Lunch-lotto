@@ -70,10 +70,10 @@ class UsersController < ApplicationController
   def update
     begin
       # @user = User.find_by(session[:id]) # use session id to find user
-      @user = User.find_by(email: params[:email]) # remove before deplay
+      @user = User.find(params[:id]) # remove before deploy
 
       @user[:name]      = params[:name]
-      @user[:network]   = params[:network]
+      @user[:network]   = params[:network]   if @user[:network]   != params[:network]   && params[:network] != nil
       @user[:bio]       = params[:bio]       if @user[:bio]       != params[:bio]       && params[:bio]     != nil
       @user[:linked_in] = params[:linked_in] if @user[:linked_in] != params[:linked_in] && params[:twitter] != nil
       @user[:twitter]   = params[:twitter]   if @user[:twitter]   != params[:twitter]   && params[:twitter] != nil
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
       Food.enter_foods_via_user(@user, params)
 
       if @user.save
-        render json: { message: "Your profile has been saved" }
+        render json: { user: @user, foods: @user.foods.first }
       else
         render json: { error: "Your profile was not saved" }, status: 500
       end
