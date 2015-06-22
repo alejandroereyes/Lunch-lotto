@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     # if authenticate_user!
       begin
-        @user = User.find(params[:id]) # replace with session before deploy
+        @user = User.find(params[:user_id]) # replace with session before deploy
         @foods = @user.foods.first
         render json: { user: @user, foods: @foods }
       rescue ActiveRecord::RecordNotFound => error
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def profile # show current user profile
     # if authenticate_user!
       begin
-        @user = User.find(params[:id]) # replace with session before deploy
+        @user = User.find(params[:user_id]) # replace with session before deploy
         @foods = @user.foods.first
         render json: { user: @user, foods: @foods }
       rescue ActiveRecord::RecordNotFound => error
@@ -27,6 +27,21 @@ class UsersController < ApplicationController
       # render json: { error: "Access Denied" }, status: 407
     # end
   end
+
+  # def current_user_matches
+  #   begin
+  #     all_user_matches = Match.where(user_id: params[:user_id]) # user id to find all of user's matchs rows
+  #     all_match_ids = []
+
+  #     all_user_matches.each { |row| all_match_ids << row[:pair] } # iterate over match rows and store pair ids into matches_array
+
+  #     @match_history = []
+  #     all_match_ids.each { |user| @match_history << {user: user, foods: user.foods} } # iterate over matches_array and pull users info and foods info
+  #     # render object with all matches profiles
+  #   rescue ActiveRecord::RecordNotFound => error
+  #     render json: { error: "No matches" }, status: 404
+  #   end
+  # end
 
   def new
     @user = User.new
@@ -39,7 +54,7 @@ class UsersController < ApplicationController
     @user_match_hits      = User.matching_food_personalities(@user_match, @current_user)
     @matched_users_binder = Match.match_two_users(@user_match, @current_user)
 
-    render json: { matched_user: @user_match, match_hits: @user_match_hits, matched_users: @matched_users_binder }
+    render json: { matched_user: @user_match, match_hits: @user_match_hits }
   end
 
   def create

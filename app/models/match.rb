@@ -4,26 +4,30 @@ class Match < ActiveRecord::Base
 
   def self.match_two_users(matched_user, current_user)
     # check if user has been matched already
-    if user_has_a_match_today?(matched_user, current_user)
-      { current: find_match_for(current_user), matched: find_match_for(matched_user) }
+    if matched_user
+      if user_has_a_match_today?(matched_user, current_user)
+        { current: find_match_for(current_user), matched: find_match_for(matched_user) }
+      else
+        event_id = SecureRandom.hex # generate unique match id
+        @current_user_match = Match.new # create new match for current
+        @matched_user_match = Match.new # create new match for matched user
+        # fill out fields for current user & save
+        @current_user_match[:event_id]   = event_id
+        @current_user_match[:user_id]    = current_user[:id]
+        @current_user_match[:pair]       = matched_user[:id]
+        @current_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
+        @current_user_match.save
+        # fill out fields for matched user & save
+        @matched_user_match[:event_id]   = event_id
+        @matched_user_match[:user_id]    = matched_user[:id]
+        @matched_user_match[:pair]       = current_user[:id]
+        @matched_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
+        @matched_user_match.save
+        # return match id
+        { current: @current_user_match, matched: @matched_user_match }
+      end
     else
-      event_id = SecureRandom.hex # generate unique match id
-      @current_user_match = Match.new # create new match for current
-      @matched_user_match = Match.new # create new match for matched user
-      # fill out fields for current user & save
-      @current_user_match[:event_id]   = event_id
-      @current_user_match[:user_id]    = current_user[:id]
-      @current_user_match[:pair]       = matched_user[:id]
-      @current_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
-      @current_user_match.save
-      # fill out fields for matched user & save
-      @matched_user_match[:event_id]   = event_id
-      @matched_user_match[:user_id]    = matched_user[:id]
-      @matched_user_match[:pair]       = current_user[:id]
-      @matched_user_match[:day]        = Time.now.strftime("%m/%d/%Y")
-      @matched_user_match.save
-      # return match id
-      { current: @current_user_match, matched: @matched_user_match }
+      { current_user: current_user, matched: {id: nil} }
     end
   end
 

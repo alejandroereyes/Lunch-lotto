@@ -50,12 +50,16 @@ class User < ActiveRecord::Base
   end
 
   def self.matching_food_personalities(matched_user,current_user) # store the 3 matches to send user info about why they got this user
-    info = []
-    info = matched_user.foods[0][:easy_breezy]     == current_user.foods[0][:easy_breezy] ?     info << "Easy Breezy" : info
-    info = matched_user.foods[0][:health_nut]      == current_user.foods[0][:health_nut] ?      info << "Health Nut" : info
-    info = matched_user.foods[0][:wild_child]      == current_user.foods[0][:wild_child] ?      info << "Wild Child" : info
-    info = matched_user.foods[0][:lux_lunch]       == current_user.foods[0][:lux_lunch] ?       info << "Lux Lunch" : info
-    info = matched_user.foods[0][:casual_sit_down] == current_user.foods[0][:casual_sit_down] ? info << "Casual Sit Down" : info
-    info
+    if matched_user
+      info = []
+      info = matched_user.foods[0][:easy_breezy]     == current_user.foods[0][:easy_breezy] ?     info << "Easy Breezy" : info
+      info = matched_user.foods[0][:health_nut]      == current_user.foods[0][:health_nut] ?      info << "Health Nut" : info
+      info = matched_user.foods[0][:wild_child]      == current_user.foods[0][:wild_child] ?      info << "Wild Child" : info
+      info = matched_user.foods[0][:lux_lunch]       == current_user.foods[0][:lux_lunch] ?       info << "Lux Lunch" : info
+      info = matched_user.foods[0][:casual_sit_down] == current_user.foods[0][:casual_sit_down] ? info << "Casual Sit Down" : info
+      info
+    else
+      info = ["Sorry no matches"]
+    end
   end
 end
