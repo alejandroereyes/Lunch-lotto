@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     # if authenticate_user!
       begin
-        @user = User.find(params[:id]) # replace with session before deploy
+        @user = User.find(session[:user_id]) # replace with session before deploy
         @foods = @user.foods.first
         render json: { user: @user, foods: @foods }
       rescue ActiveRecord::RecordNotFound => error
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def profile # show current user profile
     # if authenticate_user!
       begin
-        @user = User.find(params[:user_id]) # replace with session before deploy
+        @user = User.find(session[:user_id]) # replace with session before deploy
         @foods = @user.foods.first
         render json: { user: @user, foods: @foods }
       rescue ActiveRecord::RecordNotFound => error
