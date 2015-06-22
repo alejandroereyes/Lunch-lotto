@@ -2,7 +2,7 @@ var Profile = React.createClass({
     render: function () {
         return (
 			<div className="profile-section col12">
-				<div className="col4 col-on col-off">Hidden at Global</div>
+				<div className="col4 col-on col-off"></div>
 				<div className="profile-creation col4">
 					<form className="profile-form" id="creation-screen" onSubmit = {this.profile}>
 						<ul><li><img src="assets/profilechief" alt=""></img></li></ul>
@@ -116,7 +116,7 @@ var Profile = React.createClass({
 						</form>
 
 					</div>
-					<div className="col4 col-on col-off">Hidden at Global</div>
+					<div className="col4 col-on col-off"></div>
 				</div>
          
         );

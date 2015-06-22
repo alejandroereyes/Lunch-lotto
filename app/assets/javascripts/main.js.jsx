@@ -25,9 +25,9 @@ var App = Backbone.Router.extend({
     
 });
 
-var app = new App();
+var App = new App();
 Backbone.history.start();
-app.navigate('home');
+App.navigate('home')
 
  
 

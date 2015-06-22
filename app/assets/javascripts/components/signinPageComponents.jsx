@@ -3,7 +3,7 @@ var Register= React.createClass({
 	render: function() {
 		return (
 			<div className="General-section col12">
-				<div className="col4 col-on col-off">Hidden at Global</div>
+				<div className="col4 col-on col-off"></div>
 				<div className="Signin col4">
 					<form className="signup-form" id="signup-page" onSubmit = {this.register}>
 						<ul><li><img src="assets/Lunchbox-signin" alt=""> </img></li></ul>
